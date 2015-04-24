@@ -5,7 +5,8 @@ exports.register = function(server, options, next) {
 
 	server.route([
 
-//sign in and create a session
+// ------------------------------------------------- sign in and create a session
+		
 		{
 			method: 'POST',
 			path: '/sessions',
@@ -57,7 +58,9 @@ exports.register = function(server, options, next) {
 
 			}		
 		},
-//check if the user is logged in/authenticated
+		
+// ------------------------------------------------- check if the user is logged in/authenticated
+		
 		{
 			method: 'GET',
 			path: '/authenticated',
@@ -67,18 +70,18 @@ exports.register = function(server, options, next) {
 				});
 			}
 		},
-//log out/delete session
+		
+// ------------------------------------------------- log out/delete session
+		
 		{
 			method: 'DELETE',
 			path: '/sessions',
 			handler: function(request, reply) {
 				var session = request.session.get('bookend-session');
-
 				var db = request.server.plugins['hapi-mongodb'].db;
-
+				
 				db.collection('sessions').remove({ session_id: session.session_key }, function(err, writeResult) {
-					if (err) { return reply('Internal MongoDB error', err); }
-
+					if (err) { return reply('Internal MongoDB error', err); }	
 					reply( { ok: true } );
 
 				});
