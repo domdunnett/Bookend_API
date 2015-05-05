@@ -28,4 +28,3 @@ module.exports.authenticated = function(request, callback) {
 	});
 
 };
-
