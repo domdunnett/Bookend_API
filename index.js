@@ -1,3 +1,4 @@
+var Path = require('path');
 var Hapi = require('hapi');
 var server = new Hapi.Server();
 

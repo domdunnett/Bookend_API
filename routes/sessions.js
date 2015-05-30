@@ -13,7 +13,6 @@ exports.register = function(server, options, next) {
 			handler: function(request, reply)	{
 				var db = request.server.plugins['hapi-mongodb'].db;
 				var user = request.payload.user
-				console.log(user);
 
 				db.collection('users').findOne( { username: user.username }, function(err, userMongo) {
 					if (err) { return reply('Internal MongoDB error', err); };
