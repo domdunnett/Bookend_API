@@ -47,6 +47,8 @@ exports.register = function(server, options, next) {
 						db.collection('users').findOne( { _id: ObjectID(session.user_id) }, function(err, user) {
 
 							if (err) { reply(Hapi.error.internal('Internal MongoDB Error', err)); }
+              
+              console.log(user.favourites)
 							
 							reply( user.favourites );
 
